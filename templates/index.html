@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MP | AI Generated Art Detection
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>AI Generated Art Detection</h1>
+
+    <p>This is an image classifier. It checks if an art image is AI Generated or Non AI Generated.</p>
+    <p><strong>Model:</strong> EfficientNetB1 (fine-tuned on custom dataset)</p>
+    <!-- <p><strong>Validation Accuracy:</strong> ~93.62%</p> -->
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if file_url %}
+    <h2>Result: {{ prediction }}</h2>
+        <h3>Uploaded Image:</h3>
+        <img src="{{ file_url }}" alt="Uploaded Image"><br><br>
+        
+    {% endif %}
+</div>
+
+</body>
+</html>
